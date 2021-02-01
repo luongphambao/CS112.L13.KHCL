@@ -7,6 +7,7 @@ from random import seed
 from random import randint
 import copy
 infinity = float('inf')
+
 def dynamic(matrix):
     g = {}
     p = {}
@@ -20,10 +21,20 @@ def dynamic(matrix):
     infinity = float('inf')
     if minCost == infinity:
         return []
-    return minCost
+    path = [1]
+    while (end, s) in p:
+        item = p[end, s]
+        s = item[1]
+        end = item[0]
+        path.insert(0, end)
+    path.insert(0, 1)
+    return path, minCost
+
+
 def get_minimum(C, v, S, g, p):
     if (v, S) in g:
         return g[v, S]
+
     values = []
     all_min = []
     for j in S:
@@ -33,7 +44,6 @@ def get_minimum(C, v, S, g, p):
         result = get_minimum(C, j, tuple(set_a), g, p)
         values.append(C[v-1][j-1] + result)
 
-    # get minimun value from set as optimal solution for
     g[v, S] = min(values)
     p[v, S] = all_min[values.index(g[v, S])]
 
@@ -72,12 +82,3 @@ def get_minimum1(C, v, S, g):
     else:
       g[v, S] = min(values)
     return g[v, S]
-C = [
-    [0, 2, 9, 10],
-    [1, 0, 6, 4],
-    [15, 7, 0, 8],
-    [6, 3, 12, 0]
-]
-minCost = dynamic(C)
-
-print('Do dai:', minCost)

@@ -20,13 +20,13 @@ def tspbacktrack(C, currPos, v, n, count, lengthSoFar, path, allPaths):# code ba
                 path.pop()
                 v[i] = False
     return minCost
-def findPath(graph):#traceback 
-    v = [False for i in range(len(graph))]
+def findPath(C):#traceback 
+    v = [False for i in range(len(C))]
     v[0] = True
     path = [1]
     allPaths = []
     infinity = float('inf')
-    minCost = tspbacktrack(C, 0, v, len(graph), 1, 0, path, allPaths)
+    minCost = tspbacktrack(C, 0, v, len(C), 1, 0, path, allPaths)
     if minCost == infinity:
          return []
     for t in allPaths:
