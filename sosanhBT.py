@@ -27,7 +27,7 @@ v[0] = True
 currPos,count,cost=0,1,0
 print(C)
 
-cProfile.run(f'tspbacktrack1({C}, {currPos},{v}, {n}, {count}, {cost},{[]},{[]})')
+cProfile.run(f'tspbacktrack({C}, {currPos},{v}, {n}, {count}, {cost},{[]},{[]})')
 print(C)
 for i in range(l+1,s+1):
   print(f'so canh: {i}')
