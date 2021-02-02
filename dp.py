@@ -56,13 +56,12 @@ def dynamic1(C):
         v = [i+2 for i in range(n-1)]
         s = tuple(v)
     end = 1
-    minCost = get_minimum(C, end, s, g)
+    minCost = get_minimum1(C, end, s, g)
     if minCost == infinity:
         return []
     return minCost
 def get_minimum1(C, v, S, g):
     if (v, S) in g:
-        # Already calculated Set g[%d, (%s)]=%d' % (k, str(a), g[k, a]))
         return g[v, S]
 
     values = []
@@ -72,11 +71,8 @@ def get_minimum1(C, v, S, g):
         set_a.remove(j)
         if C[v-1][j-1]!=infinity:
           all_min.append([j, tuple(set_a)])
-          result = get_minimum(C, j, tuple(set_a), g)
+          result = get_minimum1(C, j, tuple(set_a), g)
           values.append(C[v-1][j-1] + result)
-
-
-    # get minimun value from set as optimal solution for
     if len(values)==0:
       g[v,S]=infinity
     else:
