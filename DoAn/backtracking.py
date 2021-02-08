@@ -58,12 +58,12 @@ def tspbacktrack1(C, currPos, v, n, count, lengthSoFar, path, allPaths):
     return minCost
 
 
-def findPath1(graph):
-    v = [False for i in range(len(graph))]
+def findPath1(C):
+    v = [False for i in range(len(C))]
     v[0] = True
     path = [1]
     allPaths = []
-    minCost = tspbacktrack(C, 0, v, len(graph), 1, 0, path, allPaths)
+    minCost = tspbacktrack(C, 0, v, len(C), 1, 0, path, allPaths)
     for t in allPaths:
         if t[0] == minCost:
             return t[1]

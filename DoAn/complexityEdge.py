@@ -24,7 +24,7 @@ v[0] = True
 currPos,count,cost=0,1,0
 print(C)
 
-cProfile.run(f'tspbacktrack1({C}, {currPos}, {n}, {count}, {cost})')
+cProfile.run(f'tspbacktrack1({C}, {currPos},{v}, {n}, {count}, {cost},{[]},{[]})')
 print(findPath1(C))
 for i in range(l+1,s+1):
   print(f'so canh: {i}')
@@ -33,7 +33,7 @@ for i in range(l+1,s+1):
   v[0] = True
   currPos,count,cost=0,1,0
 
-  cProfile.run(f'tspbacktrack1({C}, {currPos}, {n}, {count}, {cost})')
+  cProfile.run(f'tspbacktrack1({C}, {currPos},{v}, {n}, {count}, {cost},{[]},{[]})')
   #CODE ẢNH HƯỞNG SỐ CẠNH ĐẾN ĐPT CỦA DYNAMIC PROGRAMMING
 n=10
 C=createArray2D(n)
@@ -51,4 +51,4 @@ for i in range(l+1,s+1):
   print(f'so canh: {i}')
   C=generateInputGraph(n,C,i,i-1)#tăng so canh len 1
 
-  cProfile.run(f'dynamic({C})')
+  cProfile.run(f'dynamic1({C})')
